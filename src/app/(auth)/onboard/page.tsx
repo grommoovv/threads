@@ -3,6 +3,11 @@ import { redirect } from 'next/navigation'
 
 import { fetchUser } from '@/lib/actions/user'
 import { EditProfile } from '@/components/forms/EditProfile'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Threads | Onboard',
+}
 
 const Page = async () => {
   const user = await currentUser()
