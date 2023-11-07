@@ -16,8 +16,7 @@ interface CommunityCardProps {
 }
 
 const CommunityCard: FC<CommunityCardProps> = (props) => {
-
-	const { id, name, username, imgUrl, bio, members } = props
+  const { id, name, username, imgUrl, bio, members } = props
 
   return (
     <article className='community-card'>
