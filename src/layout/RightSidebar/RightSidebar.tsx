@@ -1,6 +1,6 @@
 import { currentUser } from '@clerk/nextjs'
 
-import UserCard from '../../components/cards/UserCard'
+import { UserCard } from '../../components/cards/UserCard'
 
 import { fetchCommunities } from '@/lib/actions/community'
 import { fetchUsers } from '@/lib/actions/user'
@@ -14,7 +14,7 @@ const RightSidebar = async () => {
     pageSize: 4,
   })
 
-  const suggestedCOmmunities = await fetchCommunities({ pageSize: 4 })
+  const suggestedCommunities = await fetchCommunities({ pageSize: 4 })
 
   return (
     <section className='custom-scrollbar rightsidebar'>
@@ -22,9 +22,9 @@ const RightSidebar = async () => {
         <h3 className='text-heading4-medium text-light-1'>Suggested Communities</h3>
 
         <div className='mt-7 flex w-[350px] flex-col gap-9'>
-          {suggestedCOmmunities.communities.length > 0 ? (
+          {suggestedCommunities.communities.length > 0 ? (
             <>
-              {suggestedCOmmunities.communities.map((community) => (
+              {suggestedCommunities.communities.map((community) => (
                 <UserCard
                   key={community.id}
                   id={community.id}
