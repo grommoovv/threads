@@ -1,33 +1,31 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
-import { Button } from "../ui/button";
+import { Button } from '../ui/button'
+import { FC } from 'react'
 
-interface Props {
-  id: string;
-  name: string;
-  username: string;
-  imgUrl: string;
-  personType: string;
+interface UserCardProps {
+  id: string
+  name: string
+  username: string
+  imgUrl: string
+  personType: string
 }
 
-function UserCard({ id, name, username, imgUrl, personType }: Props) {
-  const router = useRouter();
+const UserCard: FC<UserCardProps> = (props) => {
+  const { id, name, username, imgUrl, personType } = props
 
-  const isCommunity = personType === "Community";
+  const router = useRouter()
+
+  const isCommunity = personType === 'Community'
 
   return (
     <article className='user-card'>
       <div className='user-card_avatar'>
         <div className='relative h-12 w-12'>
-          <Image
-            src={imgUrl}
-            alt='user_logo'
-            fill
-            className='rounded-full object-cover'
-          />
+          <Image src={imgUrl} alt='user_logo' fill className='rounded-full object-cover' />
         </div>
 
         <div className='flex-1 text-ellipsis'>
@@ -40,16 +38,16 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
         className='user-card_btn'
         onClick={() => {
           if (isCommunity) {
-            router.push(`/communities/${id}`);
+            router.push(`/communities/${id}`)
           } else {
-            router.push(`/profile/${id}`);
+            router.push(`/profile/${id}`)
           }
         }}
       >
         View
       </Button>
     </article>
-  );
+  )
 }
 
-export default UserCard;
+export { UserCard }
