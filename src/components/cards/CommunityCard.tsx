@@ -1,30 +1,29 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { Button } from "../ui/button";
+import { Button } from '../ui/button'
+import { FC } from 'react'
 
-interface Props {
-  id: string;
-  name: string;
-  username: string;
-  imgUrl: string;
-  bio: string;
+interface CommunityCardProps {
+  id: string
+  name: string
+  username: string
+  imgUrl: string
+  bio: string
   members: {
-    image: string;
-  }[];
+    image: string
+  }[]
 }
 
-function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
+const CommunityCard: FC<CommunityCardProps> = (props) => {
+
+	const { id, name, username, imgUrl, bio, members } = props
+
   return (
     <article className='community-card'>
       <div className='flex flex-wrap items-center gap-3'>
         <Link href={`/communities/${id}`} className='relative h-12 w-12'>
-          <Image
-            src={imgUrl}
-            alt='community_logo'
-            fill
-            className='rounded-full object-cover'
-          />
+          <Image src={imgUrl} alt='community_logo' fill className='rounded-full object-cover' />
         </Link>
 
         <div>
@@ -53,21 +52,17 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
                 alt={`user_${index}`}
                 width={28}
                 height={28}
-                className={`${
-                  index !== 0 && "-ml-2"
-                } rounded-full object-cover`}
+                className={`${index !== 0 && '-ml-2'} rounded-full object-cover`}
               />
             ))}
             {members.length > 3 && (
-              <p className='ml-1 text-subtle-medium text-gray-1'>
-                {members.length}+ Users
-              </p>
+              <p className='ml-1 text-subtle-medium text-gray-1'>{members.length}+ Users</p>
             )}
           </div>
         )}
       </div>
     </article>
-  );
+  )
 }
 
-export default CommunityCard;
+export { CommunityCard }
