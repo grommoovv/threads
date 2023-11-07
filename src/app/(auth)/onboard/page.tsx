@@ -2,7 +2,7 @@ import { currentUser } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
 
 import { fetchUser } from '@/lib/actions/user'
-import EditProfile from '@/components/forms/EditProfile'
+import { EditProfile } from '@/components/forms/EditProfile'
 
 const Page = async () => {
   const user = await currentUser()
