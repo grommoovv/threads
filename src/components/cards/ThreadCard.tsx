@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { formatDateString } from '@/lib/utils'
-import DeleteThread from '../forms/DeleteThread'
+import { formatDateString } from '@/lib/helpers'
+import { DeleteThread } from '../forms/DeleteThread'
+import { FC } from 'react'
 
-interface Props {
+interface ThreadCardProps {
   id: string
   currentUserId: string
   parentId: string | null
@@ -28,17 +29,19 @@ interface Props {
   isComment?: boolean
 }
 
-function ThreadCard({
-  id,
-  currentUserId,
-  parentId,
-  content,
-  author,
-  community,
-  createdAt,
-  comments,
-  isComment,
-}: Props) {
+const ThreadCard: FC<ThreadCardProps> = (props) => {
+  const {
+    id,
+    currentUserId,
+    parentId,
+    content,
+    author,
+    community,
+    createdAt,
+    comments,
+    isComment,
+  } = props
+
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${isComment ? 'px-0 xs:px-7' : 'bg-dark-2 p-7'}`}
@@ -160,4 +163,4 @@ function ThreadCard({
   )
 }
 
-export default ThreadCard
+export { ThreadCard }
