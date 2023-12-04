@@ -18,7 +18,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang='en'>
         <body className={inter.className}>
-          <Topbar />
+          {/* <Topbar /> */}
           <main className='flex flex-row'>
             <LeftSidebar />
             <section className='main-container'>
